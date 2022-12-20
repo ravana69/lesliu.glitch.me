@@ -1,0 +1,393 @@
+/* DONE: CHANGED ALL LIGHTGRAY TO rgba(0,0,0,0.1), DARKGRAY to rgba(0,0,0,0.5) */
+
+body {
+  background-color: #ededed; 
+  color: black;
+  margin: 1em 1em 10em 6em;
+  font-family: sans-serif;
+  font-size: 13pt;
+}
+
+.container {
+/*   margin-top: 3em; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 10%;
+  height: 150px;
+  background-color: rgba(0,0,0,0.1);
+  margin: 10px 0 0 1%;
+  padding: 5px;
+  border: 1px solid black;
+  transition: 0.5s;
+  
+  /* applies to specific cases; setting it as an .item attribute will mess with #i5, e.g. */
+/*   overflow: scroll; */
+  
+  position: relative; /* for js transformations (34, 35) */
+  
+  /* >>> will i need to change <span>s to <div>s if i want to fix the very specific hovering bug */
+  display: block;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .item {
+    width: 25%;
+  }
+}
+
+.bigbigtext {
+  font-size: 2em;
+}
+
+a {
+  text-decoration: none;
+}
+
+#restart {
+  font-size: 8em;
+}
+
+
+#i1 {
+  transition: 0.5s;
+}
+#i1:hover {
+  background-color: rgba(0,0,0,0.5);
+  transition: 0.5s;
+}
+#i1:active {
+  background-color: black;
+  color: white;
+}
+
+#i2 {
+  transition: border-radius 2s, background-color 0.1s;
+}
+#i2:hover {
+  border-radius: 50%;
+  transition: 2s;
+}
+#i2:active {
+  background-color: black;
+  transition: 0.5s;
+}
+
+#i3 {
+  transition: height 1s;
+}
+#i3:hover {
+  height: 100vh;
+  background-image: linear-gradient(180deg, black, rgba(0,0,0,0));
+  color: white;
+  transition: height 1s;
+}
+
+#i4 {
+  transition: 1s;
+}
+#i4:hover {
+  cursor: none;
+  background-color: #ededed;
+  color: #ededed;
+  border: 1px solid #ededed;
+  transition: 0.5s;
+}
+#i4:active {
+  cursor: default;
+}
+
+#i5 {
+  transition: 0.5s;
+}
+#i5:hover {
+  padding: 30px;
+  cursor: grab;
+}
+#i5:active {
+  padding: 90px;
+  font-size: 10em;
+  cursor: grabbing;
+}
+
+#i6 {
+  transition: 1s;
+}
+#i6:hover {
+  transform: rotate(360deg);
+  transition: 1.5s;
+}
+
+#i7 {
+  transition: 0.5s;
+}
+#i7:hover {
+  box-shadow: 0px 0px 10px black;
+  transition: 1s;
+}
+#i7:active {
+  background-color: black;
+  color: white;
+  transition: 0.5s;
+  text-shadow: 0px 0px 2px white, 1px 1px 0px white, 2px -1px 4px white;
+}
+
+#i8:hover {
+  transform: rotateY(360deg);
+  transition: 2s;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+#i9 {
+  filter: blur(8px);
+  transition: 1s;
+}
+#i9:hover {
+  filter: blur(1px);
+  transition: 0.45s;
+  cursor: zoom-in;
+}
+#i9:active {
+  filter: blur(0);
+  transition: 0.2s;
+}
+
+#i10:hover {
+  border: 1px black dotted;
+  background-color: white;
+  font-weight: lighter;
+  cursor: crosshair;
+}
+
+
+
+
+.iteminfo {
+  color: rgba(0,0,0,0);
+}
+
+/* PUTTING ABOVE AND BELOW INTO JQUERY – TOGGLE .hide */
+/* nvm didnt work */
+
+.item .iteminfo:hover {
+  color: black;
+}
+
+
+
+
+
+
+
+#i13:hover {
+  border: 1px red solid;
+  color: red;
+  background-color: rgba(0,0,0,0);
+}
+#i13 .iteminfo:hover {
+  color: red;
+}
+.shakebackground {
+  background-image: linear-gradient(black,red);
+}
+
+.shake {
+  width: 100%;
+  height: 100vh;
+  font-size: 14em;
+  animation: shake 0.3s;
+  animation-iteration-count: infinite;
+  background-image: linear-gradient(red,black);
+  border: 1px rgba(0,0,0,0) solid;
+}
+@keyframes shake {
+  0% {transform: translate(1px,0px) rotate(0deg);}
+  10% {transform: translate(3px,2px) rotate(3deg);}
+  20% {transform: translate(-2px,-1px) rotate(-2deg);}
+  30% {transform: translate(-4px,3px) rotate(1deg);}
+  40% {transform: translate(1px,1px) rotate(-4deg);}
+  50% {transform: translate(0px,6px) rotate(-7deg);}
+  60% {transform: translate(0px,-3px) rotate(2deg);}
+  70% {transform: translate(-1px,-1px) rotate(-1deg);}
+  80% {transform: translate(4px,1px) rotate(0deg);}
+  90% {transform: translate(-5px,0px) rotate(3deg);}
+  100% {transform: translate(2px,1px) rotate(-1deg);}
+}
+
+.hide {
+  opacity: 0;
+}
+
+.relax {
+  border-radius: 100%;
+  transition: 2s;
+  background-color: rgba(0,0,0,0);
+  animation: relaxing 8s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes relaxing {
+  0% {transform: rotateX(360deg);}
+  33% {transform: rotateX(-45deg);}
+  66% {transform: rotateX(180deg), rotateZ(-180deg);}
+  100% {transform: rotateY(-30deg);}
+}
+
+
+#i23:hover {
+  background-color: rgba(0,0,0,0.5);
+  transition: 0.5s;
+}
+
+/* #i18 {
+  position: relative;
+} */
+#i19, #monologue {
+  overflow: scroll;
+}
+/* 19: monologue */
+#monologue {
+  color: rgba(0,0,0,0);
+  font-family: serif;
+  margin-top: 4em;
+}
+
+/* #i20:hover {
+  cursor: crosshair;
+} */
+
+/* 20 */
+.bodylightsout {
+  background-color: black;
+  color: white;
+  transition: 2s;
+}
+.itemlightsout {
+  background-color: black;
+  border: 1px solid white;
+  transition: 2s;
+}
+
+/* 21 */
+.bodybluesky {
+  background-color: lightskyblue;
+}
+.itembluesky {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid white;
+  color: white;
+}
+.iteminfobluesky {
+  color: white;
+}
+.iteminfotransparent {
+  color: rgba(0,0,0,0);
+}
+
+/* 22 */
+.bodysunset {
+/*   background-image: linear-gradient(coral, salmon); */
+  background-color: salmon;
+}
+.itemsunset {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid black;
+  color: black;
+}
+
+/* 25: give me space. done in js. */
+
+/* 26 */
+.round {
+  border-radius: '100%';
+  transition: 2s;
+}
+
+/* 27: funky colors: background —— see JS */
+/* .bodybackgroundfunky {
+  background-color: rgb(Math.round(Math.random()*255),Math.round(Math.random()*255),Math.round(Math.random()*255));
+  console.log('27. changed body bg color')
+  transition: 1s;
+} */
+
+/* 30 */
+.boogie {
+  animation: boogieinprogress 3s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes boogieinprogress {
+  0% {transform: rotateZ(-30deg)};
+  25% {transform: rotateZ(50deg), rotateY(10deg)};
+  50% {transform: rotateX(100deg), rotateY(-32deg)};
+  75% {transform: rotateZ(-142deg), rotateX(-65deg)};
+  100% {transform: rotateZ(50deg), rotateY(10deg)};
+}
+
+/* 30 supplementary/secondary ix */
+.spinaround {
+  transform: rotate(360deg);
+  transition: 1.25s;
+}
+
+/* 31 */
+.blurredvision {
+  filter: blur(6px);
+  transition: 1s;
+}
+
+/* 32 */
+.i32mouseenter {
+  width: 5%;
+  height: 10vh;
+  transform: rotatateY(360deg);
+  transition: 0.25s;
+}
+.i32mouseleave {
+  width: 10%;
+  height: 150px;
+  transition: 0.5s;
+}
+
+/* 33 */
+
+#i33 .iteminfo {
+  font-size: 5em;
+  animation: shake 0.2s;
+  animation-iteration-count: infinite;
+}
+
+/* #i13, #i33, #i5 {
+  overflow: visible;
+} */
+
+#playbutton {
+  max-width: 25%;
+  display: block;
+  opacity: 0;
+  padding-left: 10px;
+}
+
+.tremble {
+  animation: shake 0.1s;
+  animation-iteration-count: infinite;
+}
+
+
+/* 46 */
+/* #btvideo {
+  opacity: 0;
+  margin-left: -6em;
+  margin-top: -2em;
+} */
+
+#videoplayer {
+  display: none;
+  margin-left: -6em;
+  margin-top: -3em;
+} */
